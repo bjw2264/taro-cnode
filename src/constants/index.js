@@ -1,0 +1,4 @@
+export const CHANGE_DRAWER_STATUS = 'CHANGE_DRAWER_STATUS'
+export const CHANGE_MENU = 'CHANGE_MENU'
+
+export const GET_TOPIC_LIST = 'GET_TOPIC_LIST'

@@ -16,6 +16,14 @@ import moreIcon from '../../assets/images/mulu-.png'
   { changeDrawerStatus, changeMenu }
 )
 class Menu extends Component {
+  handleItemClick = index => {
+    const {catData, menu, changeMenu} = this.props
+    const currentCat = catData[index].key
+    if (currentCat !== menu.currentMenu) {
+      changeMenu(currentCat)
+    }
+  }
+  
   render() {
     const { menu, catData, changeDrawerStatus, changeMenu } = this.props
     const currentTitle = catData.find(v => v.key === menu.currentMenu).value
@@ -26,7 +34,7 @@ class Menu extends Component {
             show={menu.isShowMenu} 
             items={catData.map(v => v.value)} 
             onClose={changeDrawerStatus} 
-            onItemClick={index => changeMenu(catData[index].key)}  
+            onItemClick={this.handleItemClick}  
           />
         </View>
         <Image src={moreIcon} onClick={changeDrawerStatus} className="img left" />

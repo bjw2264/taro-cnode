@@ -1,2 +1,2 @@
 export {changeDrawerStatus, changeMenu} from './menu'
-export { getTopicList } from './topic'
+export { getTopicList, getPaginationList } from './topic'

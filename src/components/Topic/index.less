@@ -1,0 +1,53 @@
+.topic-wrapper {
+  display: flex;
+  align-items: flex-start;
+  .tab {
+    font-size: 24px;
+    padding: 4px 8px;
+    color: #999;
+    background-color: #e5e5e5;
+    white-space: nowrap;
+    border-radius: 6px;
+    margin: 0 10px;
+    margin-top: 8px;
+    &.top, &.good {
+      color: #fff;
+      background-color: #80bd01;
+    }
+  }
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 30px;
+    min-height: 80px;
+    margin-left: 16px;
+    .top {
+      max-width: 490px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      .visit {
+        font-size: 20px;
+        .reply {
+          color: #9e78c0;
+        }
+        .all {
+          color: #b4b4b4;
+        }
+      }
+      .time {
+        font-size: 20px;
+        color: #778087;
+      }
+      .author {
+        font-size: 20px;
+      }
+    }
+  }
+}

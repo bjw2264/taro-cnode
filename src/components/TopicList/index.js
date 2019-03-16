@@ -1,13 +1,15 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
+import { View, Text, Image, ScrollView } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
-import { getTopicList } from '../../actions'
-import Topic from './topic'
+import { getTopicList, getPaginationList } from '../../actions'
+import Topic from '../Topic'
+
+import './index.less'
 
 @connect(
-  ({topic}) => ({...topic}),
-  { getTopicList }
+  ({topic, menu}) => ({...topic, ...menu}),
+  { getTopicList, getPaginationList }
 )
 class TopicList extends Component {
 
@@ -15,16 +17,25 @@ class TopicList extends Component {
     this.props.getTopicList()
   }
 
+  handleScrollToLower = () => {
+    const { page, getPaginationList, currentMenu } = this.props
+    getPaginationList({page:page+1,tab:currentMenu})
+  }
+
   render() {
     const { list } = this.props
     return (
-      <View className="topic-list-wrapper">
+      <ScrollView 
+        className="topic-list-wrapper"
+        scrollY  
+        onScrollToLower={this.handleScrollToLower}
+      >
         {
           list.length?
-          list.map(v => <Topic key={v.id} />):
+          list.map(v => <View className="item" key={v.id}><Topic data={v} /></View>):
           null
         }
-      </View>
+      </ScrollView>
     )
   }
 }
